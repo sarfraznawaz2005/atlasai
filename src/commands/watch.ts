@@ -17,8 +17,8 @@ export async function runWatch(projectPath: string): Promise<void> {
     process.exit(1);
   }
 
-  if (!fileExists(path.join(projectRoot, '.atlas', 'index.json'))) {
-    logger.warn('.atlas/ not initialized. Running init first...');
+  if (!fileExists(path.join(projectRoot, '.agent-atlas', 'index.json'))) {
+    logger.warn('.agent-atlas/ not initialized. Running init first...');
     const { runInit } = await import('./init');
     await runInit(projectPath);
   }
@@ -26,7 +26,7 @@ export async function runWatch(projectPath: string): Promise<void> {
   const extPattern = `**/*.{${SOURCE_EXTENSIONS.join(',')}}`;
   const ignoredPatterns = [
     ...ALWAYS_IGNORED_DIRS.map((d: string) => `**/${d}/**`),
-    '**/.atlas/**',
+    '**/.agent-atlas/**',
   ];
 
   logger.info(`Watching ${projectRoot} for changes...`);

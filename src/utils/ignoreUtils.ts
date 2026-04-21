@@ -16,7 +16,7 @@ export const ALWAYS_IGNORED_DIRS = [
   'venv',
   'vendor',
   'target',
-  '.atlas',
+  '.agent-atlas',
   '.turbo',
   '.cache',
   'out',

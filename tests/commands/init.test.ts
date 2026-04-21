@@ -44,14 +44,14 @@ describe('init command - integration test', () => {
     }
   }
 
-  it('should create .atlas/ directory', async () => {
+  it('should create .agent-atlas/ directory', async () => {
     createProjectFiles({
       'src/index.ts': 'export const app = {};',
     });
 
     await runInit(tmpDir);
 
-    expect(fs.existsSync(path.join(tmpDir, '.atlas'))).toBe(true);
+    expect(fs.existsSync(path.join(tmpDir, '.agent-atlas'))).toBe(true);
   });
 
   it('should create index.json with correct structure', async () => {
@@ -66,7 +66,7 @@ export function startServer() {
 
     await runInit(tmpDir);
 
-    const indexPath = path.join(tmpDir, '.atlas', 'index.json');
+    const indexPath = path.join(tmpDir, '.agent-atlas', 'index.json');
     expect(fs.existsSync(indexPath)).toBe(true);
 
     const index = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as AtlasIndex;
@@ -97,7 +97,7 @@ export function createUserAccount(name: string, email: string) {
 
     await runInit(tmpDir);
 
-    const conceptsPath = path.join(tmpDir, '.atlas', 'concepts.json');
+    const conceptsPath = path.join(tmpDir, '.agent-atlas', 'concepts.json');
     expect(fs.existsSync(conceptsPath)).toBe(true);
 
     const concepts = JSON.parse(fs.readFileSync(conceptsPath, 'utf-8')) as ConceptsMap;
@@ -125,7 +125,7 @@ export class UserService {
 
     await runInit(tmpDir);
 
-    const domainsDir = path.join(tmpDir, '.atlas', 'domains');
+    const domainsDir = path.join(tmpDir, '.agent-atlas', 'domains');
     expect(fs.existsSync(domainsDir)).toBe(true);
 
     const domainFiles = fs.readdirSync(domainsDir);
@@ -143,7 +143,7 @@ export function handleResponse() {}
 
     await runInit(tmpDir);
 
-    const conventionsPath = path.join(tmpDir, '.atlas', 'conventions.json');
+    const conventionsPath = path.join(tmpDir, '.agent-atlas', 'conventions.json');
     expect(fs.existsSync(conventionsPath)).toBe(true);
 
     const conventions = JSON.parse(fs.readFileSync(conventionsPath, 'utf-8'));
@@ -159,7 +159,7 @@ export function handleResponse() {}
 
     await runInit(tmpDir);
 
-    const constraintsPath = path.join(tmpDir, '.atlas', 'constraints.md');
+    const constraintsPath = path.join(tmpDir, '.agent-atlas', 'constraints.md');
     expect(fs.existsSync(constraintsPath)).toBe(true);
 
     const content = fs.readFileSync(constraintsPath, 'utf-8');
@@ -174,7 +174,7 @@ export function handleResponse() {}
 
     await runInit(tmpDir);
 
-    const historyPath = path.join(tmpDir, '.atlas', 'history.jsonl');
+    const historyPath = path.join(tmpDir, '.agent-atlas', 'history.jsonl');
     expect(fs.existsSync(historyPath)).toBe(true);
     // Should be empty or contain only whitespace
     const content = fs.readFileSync(historyPath, 'utf-8');
@@ -197,7 +197,7 @@ class MigrationRunner:
 
     await runInit(tmpDir);
 
-    const conceptsPath = path.join(tmpDir, '.atlas', 'concepts.json');
+    const conceptsPath = path.join(tmpDir, '.agent-atlas', 'concepts.json');
     const concepts = JSON.parse(fs.readFileSync(conceptsPath, 'utf-8')) as ConceptsMap;
 
     // Should have symbols from both files
@@ -218,7 +218,7 @@ class MigrationRunner:
     await expect(runInit(tmpDir)).resolves.not.toThrow();
 
     // Atlas should still be created
-    expect(fs.existsSync(path.join(tmpDir, '.atlas', 'index.json'))).toBe(true);
+    expect(fs.existsSync(path.join(tmpDir, '.agent-atlas', 'index.json'))).toBe(true);
   });
 
   it('should detect multiple domains correctly', async () => {
@@ -231,7 +231,7 @@ class MigrationRunner:
     await runInit(tmpDir);
 
     const index = JSON.parse(
-      fs.readFileSync(path.join(tmpDir, '.atlas', 'index.json'), 'utf-8')
+      fs.readFileSync(path.join(tmpDir, '.agent-atlas', 'index.json'), 'utf-8')
     ) as AtlasIndex;
 
     expect(Object.keys(index.domains)).toContain('auth');
@@ -248,7 +248,7 @@ class MigrationRunner:
     await runInit(tmpDir);
 
     const index = JSON.parse(
-      fs.readFileSync(path.join(tmpDir, '.atlas', 'index.json'), 'utf-8')
+      fs.readFileSync(path.join(tmpDir, '.agent-atlas', 'index.json'), 'utf-8')
     ) as AtlasIndex;
 
     // Should detect src/index.ts and/or src/app.ts as entry points
@@ -264,7 +264,7 @@ class MigrationRunner:
     await runInit(tmpDir);
 
     const claudeMd = fs.readFileSync(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
-    expect(claudeMd).toContain('.atlas/index.json');
+    expect(claudeMd).toContain('.agent-atlas/index.json');
   });
 
   it('should not write bridge line to CLAUDE.md if it does not exist', async () => {
@@ -280,14 +280,14 @@ class MigrationRunner:
   it('should not duplicate bridge line if already present', async () => {
     createProjectFiles({
       'src/index.ts': 'export {}',
-      'CLAUDE.md': '# Instructions\n\nBefore starting any task, read .atlas/index.json first.\n',
+      'CLAUDE.md': '# Instructions\n\nBefore starting any task, read .agent-atlas/index.json first.\n',
     });
 
     await runInit(tmpDir);
     await runInit(tmpDir); // run twice
 
     const claudeMd = fs.readFileSync(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
-    const occurrences = (claudeMd.match(/\.atlas\/index\.json/g) || []).length;
+    const occurrences = (claudeMd.match(/\.agent-atlas\/index\.json/g) || []).length;
     expect(occurrences).toBe(1);
   });
 

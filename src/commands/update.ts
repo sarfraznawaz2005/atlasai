@@ -23,11 +23,11 @@ export async function runUpdate(projectPath: string, changedFiles?: string[]): P
     process.exit(1);
   }
 
-  const atlasDir = path.join(projectRoot, '.atlas');
+  const atlasDir = path.join(projectRoot, '.agent-atlas');
   const indexPath = path.join(atlasDir, 'index.json');
 
   if (!fileExists(indexPath)) {
-    logger.warn('.atlas/index.json not found. Running full init instead...');
+    logger.warn('.agent-atlas/index.json not found. Running full init instead...');
     const { runInit } = await import('./init');
     return runInit(projectPath);
   }

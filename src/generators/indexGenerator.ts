@@ -10,7 +10,7 @@ export function generateIndex(
 ): AtlasIndex {
   const domainRefs: Record<string, string> = {};
   for (const domain of domains) {
-    domainRefs[domain.name] = `.atlas/domains/${domain.name}.md`;
+    domainRefs[domain.name] = `.agent-atlas/domains/${domain.name}.md`;
   }
 
   const atlasRelative = path.relative(projectRoot, atlasDir).replace(/\\/g, '/');

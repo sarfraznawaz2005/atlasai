@@ -33,7 +33,7 @@ export async function runInit(projectPath: string): Promise<void> {
 
   logger.step('Initializing', `atlas for ${projectRoot}`);
 
-  const atlasDir = path.join(projectRoot, '.atlas');
+  const atlasDir = path.join(projectRoot, '.agent-atlas');
   const domainsDir = path.join(atlasDir, 'domains');
   ensureDir(atlasDir);
   ensureDir(domainsDir);
@@ -140,19 +140,19 @@ export async function runInit(projectPath: string): Promise<void> {
     `${Object.keys(conceptsMap).length} concept keywords indexed`,
     `Project type: ${projectInfo.type}`,
     `Architecture: ${projectInfo.architecturePattern}`,
-    `.atlas/ directory created at ${atlasDir}`,
+    `.agent-atlas/ directory created at ${atlasDir}`,
   ]);
 }
 
 function writeBridgeLines(projectRoot: string): void {
-  const bridgeLine = '\nBefore starting any task, read .atlas/index.json first.\n';
+  const bridgeLine = '\nBefore starting any task, read .agent-atlas/index.json first.\n';
   const bridgeFiles = ['CLAUDE.md', 'GEMINI.md', '.cursorrules'];
 
   for (const bridgeFile of bridgeFiles) {
     const filePath = path.join(projectRoot, bridgeFile);
     if (fileExists(filePath)) {
       const content = fs.readFileSync(filePath, 'utf-8');
-      if (!content.includes('.atlas/index.json')) {
+      if (!content.includes('.agent-atlas/index.json')) {
         fs.appendFileSync(filePath, bridgeLine, 'utf-8');
         logger.info(`Added atlas bridge line to ${bridgeFile}`);
       }

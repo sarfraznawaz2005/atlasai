@@ -10,19 +10,19 @@ const GRAY = '\x1b[90m';
 
 export const logger = {
   info(message: string): void {
-    console.log(`${CYAN}[atlas]${RESET} ${message}`);
+    console.log(`${CYAN}[agent-atlas]${RESET} ${message}`);
   },
 
   success(message: string): void {
-    console.log(`${GREEN}[atlas]${RESET} ${BOLD}${message}${RESET}`);
+    console.log(`${GREEN}[agent-atlas]${RESET} ${BOLD}${message}${RESET}`);
   },
 
   warn(message: string): void {
-    console.warn(`${YELLOW}[atlas]${RESET} ${YELLOW}Warning:${RESET} ${message}`);
+    console.warn(`${YELLOW}[agent-atlas]${RESET} ${YELLOW}Warning:${RESET} ${message}`);
   },
 
   error(message: string): void {
-    console.error(`${RED}[atlas]${RESET} ${RED}Error:${RESET} ${message}`);
+    console.error(`${RED}[agent-atlas]${RESET} ${RED}Error:${RESET} ${message}`);
   },
 
   debug(message: string): void {
@@ -32,7 +32,7 @@ export const logger = {
   },
 
   step(step: string, detail: string): void {
-    console.log(`${BLUE}[atlas]${RESET} ${BOLD}${step}${RESET} ${detail}`);
+    console.log(`${BLUE}[agent-atlas]${RESET} ${BOLD}${step}${RESET} ${detail}`);
   },
 
   summary(lines: string[]): void {
