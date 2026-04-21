@@ -245,14 +245,6 @@
       "type": "function"
     }
   ],
-  "init": [
-    {
-      "file": "src/commands/init.ts",
-      "line": 21,
-      "symbol": "runInit",
-      "type": "function"
-    }
-  ],
   "write": [
     {
       "file": "src/commands/init.ts",
@@ -271,38 +263,6 @@
       "line": 26,
       "symbol": "writeFile",
       "type": "function"
-    }
-  ],
-  "bridge": [
-    {
-      "file": "src/commands/init.ts",
-      "line": 147,
-      "symbol": "writeBridgeLines",
-      "type": "function"
-    }
-  ],
-  "lines": [
-    {
-      "file": "src/commands/init.ts",
-      "line": 147,
-      "symbol": "writeBridgeLines",
-      "type": "function"
-    }
-  ],
-  "source": [
-    {
-      "file": "src/commands/init.ts",
-      "line": 163,
-      "symbol": "SOURCE_EXTENSIONS",
-      "type": "export"
-    }
-  ],
-  "extensions": [
-    {
-      "file": "src/commands/init.ts",
-      "line": 163,
-      "symbol": "SOURCE_EXTENSIONS",
-      "type": "export"
     }
   ],
   "update": [
@@ -1455,6 +1415,46 @@
       "line": 48,
       "symbol": "mergeConceptsForFiles",
       "type": "function"
+    }
+  ],
+  "init": [
+    {
+      "file": "src/commands/init.ts",
+      "line": 21,
+      "symbol": "runInit",
+      "type": "function"
+    }
+  ],
+  "bridge": [
+    {
+      "file": "src/commands/init.ts",
+      "line": 147,
+      "symbol": "writeBridgeLines",
+      "type": "function"
+    }
+  ],
+  "lines": [
+    {
+      "file": "src/commands/init.ts",
+      "line": 147,
+      "symbol": "writeBridgeLines",
+      "type": "function"
+    }
+  ],
+  "source": [
+    {
+      "file": "src/commands/init.ts",
+      "line": 163,
+      "symbol": "SOURCE_EXTENSIONS",
+      "type": "export"
+    }
+  ],
+  "extensions": [
+    {
+      "file": "src/commands/init.ts",
+      "line": 163,
+      "symbol": "SOURCE_EXTENSIONS",
+      "type": "export"
     }
   ]
 }

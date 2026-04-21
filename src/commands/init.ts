@@ -145,15 +145,15 @@ export async function runInit(projectPath: string): Promise<void> {
 }
 
 function writeBridgeLines(projectRoot: string): void {
-  const bridgeLine = '\nBefore starting any task, read .agent-atlas/index.json first.\n';
-  const bridgeFiles = ['CLAUDE.md', 'GEMINI.md', '.cursorrules'];
+  const bridgeLine = `IMPORTANT: Before starting any task, read and follow .agent-atlas/index.json — a codebase navigation layer providing domain docs, a keyword→file:line concepts index, conventions, and constraints.\n\n`;
+  const bridgeFiles = ['CLAUDE.md', 'AGENTS.md', 'GEMINI.md', '.cursorrules'];
 
   for (const bridgeFile of bridgeFiles) {
     const filePath = path.join(projectRoot, bridgeFile);
     if (fileExists(filePath)) {
       const content = fs.readFileSync(filePath, 'utf-8');
       if (!content.includes('.agent-atlas/index.json')) {
-        fs.appendFileSync(filePath, bridgeLine, 'utf-8');
+        fs.writeFileSync(filePath, bridgeLine + content, 'utf-8');
         logger.info(`Added atlas bridge line to ${bridgeFile}`);
       }
     }
