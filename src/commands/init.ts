@@ -57,6 +57,13 @@ export async function runInit(projectPath: string): Promise<void> {
     .map(f => toRelativePath(f, projectRoot))
     .filter(f => !shouldIgnore(f));
 
+  if (sourceFiles.length === 0) {
+    logger.warn(`No source files found in ${projectRoot}.`);
+    logger.warn('Check that the path is correct and contains supported source files (.ts, .js, .py, .go, etc.)');
+    logger.warn('If files are being excluded, check your .gitignore or .agentatlasignore.');
+    process.exit(1);
+  }
+
   logger.info(`Found ${sourceFiles.length} source files`);
 
   // Parse all files

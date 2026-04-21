@@ -6,11 +6,17 @@ const MIN_KEYWORD_LENGTH = 3;
  * Handles camelCase, PascalCase, snake_case, kebab-case, and SCREAMING_SNAKE_CASE.
  */
 export function decomposeIdentifier(name: string): string[] {
-  // Remove leading/trailing special chars
-  const cleaned = name.replace(/[^a-zA-Z0-9_\-]/g, '');
+  // Split on route/path separators first (handles symbols like "POST:/register", "GET:/:id")
+  const slashParts = name.split(/[/:]+/);
 
-  // Split on underscores and hyphens first
-  const underscoreParts = cleaned.split(/[_\-]+/);
+  // Rejoin with spaces so they're treated as separate words, then clean
+  const preJoined = slashParts.join(' ');
+
+  // Remove remaining special chars (keep alphanumeric, underscore, hyphen, space)
+  const cleaned = preJoined.replace(/[^a-zA-Z0-9_\- ]/g, ' ');
+
+  // Split on underscores, hyphens, and spaces first
+  const underscoreParts = cleaned.split(/[_\-\s]+/);
 
   const allParts: string[] = [];
 

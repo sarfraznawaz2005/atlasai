@@ -137,7 +137,7 @@ export function generateDomainMarkdown(domain: DomainInfo): string {
       for (const t of typeOrder) {
         const syms = byType.get(t);
         if (!syms || syms.length === 0) continue;
-        lines.push(`**${capitalize(t)}s:**`);
+        lines.push(`**${pluralizeType(t)}:**`);
         for (const sym of syms) {
           lines.push(`- \`${sym.name}\` (line ${sym.line})`);
         }
@@ -223,6 +223,17 @@ function generateChangeRecipe(domain: DomainInfo): string {
   return lines.join('\n');
 }
 
-function capitalize(str: string): string {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+const PLURAL_MAP: Record<string, string> = {
+  'class': 'Classes',
+  'interface': 'Interfaces',
+  'type': 'Types',
+  'function': 'Functions',
+  'method': 'Methods',
+  'route': 'Routes',
+  'export': 'Exports',
+  'variable': 'Variables',
+};
+
+function pluralizeType(t: string): string {
+  return PLURAL_MAP[t] ?? (t.charAt(0).toUpperCase() + t.slice(1) + 's');
 }

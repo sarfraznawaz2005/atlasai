@@ -1,6 +1,6 @@
 {
   "name": "agent-atlas",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Auto-generate a navigational index for AI agents to understand any codebase",
   "author": "Sarfraz Ahmed",
   "license": "MIT",
