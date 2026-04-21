@@ -166,7 +166,7 @@ An empty file at init time. After each task, your agent appends a record describ
 `agent-atlas init` detects common agent configuration files in your project root and appends a single bridge line to each one that already exists:
 
 ```
-Before starting any task, read .agent-atlas/index.json first.
+IMPORTANT: Before starting any task, read .agent-atlas/index.json first.
 ```
 
 | Agent | Config file |
