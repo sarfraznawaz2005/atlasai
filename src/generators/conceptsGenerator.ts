@@ -5,7 +5,7 @@ import { ParsedSymbol, ConceptsMap, ConceptEntry } from '../types';
  * Each keyword from each symbol maps to an array of ConceptEntry records.
  */
 export function generateConcepts(symbols: ParsedSymbol[]): ConceptsMap {
-  const map: ConceptsMap = {};
+  const map: ConceptsMap = Object.create(null);
 
   for (const symbol of symbols) {
     const entry: ConceptEntry = {
@@ -16,7 +16,7 @@ export function generateConcepts(symbols: ParsedSymbol[]): ConceptsMap {
     };
 
     for (const keyword of symbol.keywords) {
-      if (!map[keyword]) {
+      if (!Object.prototype.hasOwnProperty.call(map, keyword)) {
         map[keyword] = [];
       }
 
@@ -53,7 +53,7 @@ export function mergeConceptsForFiles(
   const changedSet = new Set(changedFiles);
 
   // Remove old entries for changed files
-  const pruned: ConceptsMap = {};
+  const pruned: ConceptsMap = Object.create(null);
   for (const [keyword, entries] of Object.entries(existing)) {
     const filtered = entries.filter(e => !changedSet.has(e.file));
     if (filtered.length > 0) {

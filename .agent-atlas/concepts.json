@@ -411,22 +411,6 @@
       "type": "function"
     }
   ],
-  "merge": [
-    {
-      "file": "src/generators/conceptsGenerator.ts",
-      "line": 48,
-      "symbol": "mergeConceptsForFiles",
-      "type": "function"
-    }
-  ],
-  "for": [
-    {
-      "file": "src/generators/conceptsGenerator.ts",
-      "line": 48,
-      "symbol": "mergeConceptsForFiles",
-      "type": "function"
-    }
-  ],
   "files": [
     {
       "file": "src/generators/conceptsGenerator.ts",
@@ -1454,6 +1438,22 @@
       "file": "tests/commands/init.test.ts",
       "line": 36,
       "symbol": "createProjectFiles",
+      "type": "function"
+    }
+  ],
+  "merge": [
+    {
+      "file": "src/generators/conceptsGenerator.ts",
+      "line": 48,
+      "symbol": "mergeConceptsForFiles",
+      "type": "function"
+    }
+  ],
+  "for": [
+    {
+      "file": "src/generators/conceptsGenerator.ts",
+      "line": 48,
+      "symbol": "mergeConceptsForFiles",
       "type": "function"
     }
   ]
