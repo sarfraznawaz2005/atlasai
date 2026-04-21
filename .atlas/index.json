@@ -1,0 +1,27 @@
+{
+  "project": {
+    "name": "atlas-ai",
+    "type": "Node.js",
+    "language": "TypeScript",
+    "languages": [
+      "TypeScript"
+    ]
+  },
+  "entry_points": {
+    "main": "./dist/cli.js"
+  },
+  "domains": {
+    "utils": ".atlas/domains/utils.md",
+    "commands": ".atlas/domains/commands.md",
+    "generators": ".atlas/domains/generators.md",
+    "git": ".atlas/domains/git.md",
+    "parsers": ".atlas/domains/parsers.md",
+    "root": ".atlas/domains/root.md",
+    "tests": ".atlas/domains/tests.md"
+  },
+  "concepts_index": ".atlas/concepts.json",
+  "conventions": ".atlas/conventions.json",
+  "constraints": ".atlas/constraints.md",
+  "architecture_pattern": "Flat / Unstructured",
+  "last_generated": "2026-04-21T13:23:45.920Z"
+}

@@ -1,0 +1,157 @@
+import * as path from 'path';
+import * as fs from 'fs';
+import fg from 'fast-glob';
+import { parseFile } from '../parsers/parserFactory';
+import { generateConcepts } from '../generators/conceptsGenerator';
+import { detectDomains, generateDomainMarkdown } from '../generators/domainsGenerator';
+import { generateConventions } from '../generators/conventionsGenerator';
+import { generateIndex, generateConstraintsMd } from '../generators/indexGenerator';
+import { installGitHook } from '../git/hookInstaller';
+import { detectProject } from '../utils/projectDetector';
+import { writeJSON, writeFile, ensureDir, toRelativePath, fileExists } from '../utils/fileUtils';
+import { logger } from '../utils/logger';
+import { ParsedSymbol } from '../types';
+
+const IGNORED_DIRS = [
+  'node_modules', '.git', 'dist', 'build', 'coverage',
+  '.next', '__pycache__', '.venv', 'venv', 'vendor',
+  'target', '.atlas', '.turbo', '.cache', 'out',
+];
+
+const SOURCE_EXTENSIONS = [
+  'ts', 'tsx', 'js', 'jsx', 'py', 'go', 'rb', 'rs',
+  'java', 'kt', 'php', 'swift', 'c', 'cpp', 'cs', 'vue', 'svelte',
+];
+
+export async function runInit(projectPath: string): Promise<void> {
+  const projectRoot = path.resolve(projectPath);
+
+  if (!fs.existsSync(projectRoot)) {
+    logger.error(`Project path does not exist: ${projectRoot}`);
+    process.exit(1);
+  }
+
+  if (!fs.statSync(projectRoot).isDirectory()) {
+    logger.error(`Project path is not a directory: ${projectRoot}`);
+    process.exit(1);
+  }
+
+  logger.step('Initializing', `atlas for ${projectRoot}`);
+
+  const atlasDir = path.join(projectRoot, '.atlas');
+  const domainsDir = path.join(atlasDir, 'domains');
+  ensureDir(atlasDir);
+  ensureDir(domainsDir);
+
+  // Discover source files
+  logger.step('Discovering', 'source files...');
+  const ignoredGlobs = IGNORED_DIRS.map(d => `**/${d}/**`);
+  const extensionGlob = `**/*.{${SOURCE_EXTENSIONS.join(',')}}`;
+
+  const absoluteFiles = await fg(extensionGlob, {
+    cwd: projectRoot,
+    ignore: ignoredGlobs,
+    absolute: true,
+    followSymbolicLinks: false,
+    dot: false,
+  });
+
+  const sourceFiles = absoluteFiles.map(f => toRelativePath(f, projectRoot));
+
+  logger.info(`Found ${sourceFiles.length} source files`);
+
+  // Parse all files
+  logger.step('Parsing', 'source files...');
+  const allSymbols: ParsedSymbol[] = [];
+  let parseErrors = 0;
+
+  for (const relFile of sourceFiles) {
+    const absFile = path.join(projectRoot, relFile);
+    try {
+      const content = fs.readFileSync(absFile, 'utf-8');
+      const symbols = parseFile(relFile, content);
+      allSymbols.push(...symbols);
+    } catch (err) {
+      parseErrors++;
+      logger.warn(`Could not read ${relFile}: ${err instanceof Error ? err.message : String(err)}`);
+    }
+  }
+
+  logger.info(`Extracted ${allSymbols.length} symbols from ${sourceFiles.length} files`);
+  if (parseErrors > 0) {
+    logger.warn(`${parseErrors} files could not be read`);
+  }
+
+  // Detect project info
+  const projectInfo = detectProject(projectRoot, sourceFiles);
+
+  // Generate concepts
+  logger.step('Generating', 'concepts.json...');
+  const conceptsMap = generateConcepts(allSymbols);
+  writeJSON(path.join(atlasDir, 'concepts.json'), conceptsMap);
+
+  // Generate domains
+  logger.step('Generating', 'domain files...');
+  const domains = detectDomains(sourceFiles, allSymbols, projectRoot);
+  for (const domain of domains) {
+    const md = generateDomainMarkdown(domain);
+    writeFile(path.join(domainsDir, `${domain.name}.md`), md);
+  }
+  logger.info(`Generated ${domains.length} domain files`);
+
+  // Generate conventions
+  logger.step('Generating', 'conventions.json...');
+  const conventions = generateConventions(sourceFiles, allSymbols, projectRoot);
+  writeJSON(path.join(atlasDir, 'conventions.json'), conventions);
+
+  // Generate constraints template
+  logger.step('Generating', 'constraints.md...');
+  const constraintsMd = generateConstraintsMd();
+  writeFile(path.join(atlasDir, 'constraints.md'), constraintsMd);
+
+  // Initialize history.jsonl (empty)
+  const historyPath = path.join(atlasDir, 'history.jsonl');
+  if (!fileExists(historyPath)) {
+    writeFile(historyPath, '');
+  }
+
+  // Generate index
+  logger.step('Generating', 'index.json...');
+  const index = generateIndex(projectInfo, domains, atlasDir, projectRoot);
+  writeJSON(path.join(atlasDir, 'index.json'), index);
+
+  // Install git hook
+  installGitHook(projectRoot);
+
+  // Write bridge lines to AI config files
+  writeBridgeLines(projectRoot);
+
+  // Print summary
+  logger.summary([
+    `${sourceFiles.length} files scanned`,
+    `${allSymbols.length} symbols extracted`,
+    `${domains.length} domains detected`,
+    `${Object.keys(conceptsMap).length} concept keywords indexed`,
+    `Project type: ${projectInfo.type}`,
+    `Architecture: ${projectInfo.architecturePattern}`,
+    `.atlas/ directory created at ${atlasDir}`,
+  ]);
+}
+
+function writeBridgeLines(projectRoot: string): void {
+  const bridgeLine = '\nBefore starting any task, read .atlas/index.json first.\n';
+  const bridgeFiles = ['CLAUDE.md', 'GEMINI.md', '.cursorrules'];
+
+  for (const bridgeFile of bridgeFiles) {
+    const filePath = path.join(projectRoot, bridgeFile);
+    if (fileExists(filePath)) {
+      const content = fs.readFileSync(filePath, 'utf-8');
+      if (!content.includes('.atlas/index.json')) {
+        fs.appendFileSync(filePath, bridgeLine, 'utf-8');
+        logger.info(`Added atlas bridge line to ${bridgeFile}`);
+      }
+    }
+  }
+}
+
+export { IGNORED_DIRS, SOURCE_EXTENSIONS };
