@@ -18,8 +18,8 @@ _No exported symbols detected._
 - `DomainInfo` (line 18)
 - `ConventionsData` (line 25)
 - `AtlasIndex` (line 43)
-- `AtlasConfig` (line 59)
-- `Parser` (line 66)
+- `AtlasConfig` (line 63)
+- `Parser` (line 70)
 
 **Types:**
 - `ConceptsMap` (line 16)

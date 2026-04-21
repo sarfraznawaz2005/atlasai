@@ -54,6 +54,10 @@ export interface AtlasIndex {
   constraints: string;
   architecture_pattern: string;
   last_generated: string;
+  usage_hints: {
+    concepts_index: string;
+    workflow: string[];
+  };
 }
 
 export interface AtlasConfig {

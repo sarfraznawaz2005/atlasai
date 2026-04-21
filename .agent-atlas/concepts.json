@@ -166,7 +166,7 @@
     },
     {
       "file": "src/types.ts",
-      "line": 59,
+      "line": 63,
       "symbol": "AtlasConfig",
       "type": "interface"
     }
@@ -188,7 +188,7 @@
   "config": [
     {
       "file": "src/types.ts",
-      "line": 59,
+      "line": 63,
       "symbol": "AtlasConfig",
       "type": "interface"
     }
@@ -220,7 +220,7 @@
     },
     {
       "file": "src/types.ts",
-      "line": 66,
+      "line": 70,
       "symbol": "Parser",
       "type": "interface"
     }
@@ -373,90 +373,6 @@
       "type": "function"
     }
   ],
-  "install": [
-    {
-      "file": "src/git/hookInstaller.ts",
-      "line": 16,
-      "symbol": "installGitHook",
-      "type": "function"
-    }
-  ],
-  "git": [
-    {
-      "file": "src/git/hookInstaller.ts",
-      "line": 16,
-      "symbol": "installGitHook",
-      "type": "function"
-    },
-    {
-      "file": "src/git/hookInstaller.ts",
-      "line": 51,
-      "symbol": "removeGitHook",
-      "type": "function"
-    }
-  ],
-  "hook": [
-    {
-      "file": "src/git/hookInstaller.ts",
-      "line": 16,
-      "symbol": "installGitHook",
-      "type": "function"
-    },
-    {
-      "file": "src/git/hookInstaller.ts",
-      "line": 51,
-      "symbol": "removeGitHook",
-      "type": "function"
-    }
-  ],
-  "remove": [
-    {
-      "file": "src/git/hookInstaller.ts",
-      "line": 51,
-      "symbol": "removeGitHook",
-      "type": "function"
-    }
-  ],
-  "make": [
-    {
-      "file": "src/git/hookInstaller.ts",
-      "line": 74,
-      "symbol": "makeExecutable",
-      "type": "function"
-    },
-    {
-      "file": "src/parsers/genericParser.ts",
-      "line": 166,
-      "symbol": "makeSymbol",
-      "type": "method"
-    },
-    {
-      "file": "tests/generators/conceptsGenerator.test.ts",
-      "line": 96,
-      "symbol": "makeSymbol",
-      "type": "function"
-    },
-    {
-      "file": "tests/generators/conceptsGenerator.test.ts",
-      "line": 188,
-      "symbol": "makeSymbol",
-      "type": "function"
-    },
-    {
-      "file": "tests/generators/domainsGenerator.test.ts",
-      "line": 5,
-      "symbol": "makeSymbol",
-      "type": "function"
-    }
-  ],
-  "executable": [
-    {
-      "file": "src/git/hookInstaller.ts",
-      "line": 74,
-      "symbol": "makeExecutable",
-      "type": "function"
-    }
-  ],
   "generate": [
     {
       "file": "src/generators/conceptsGenerator.ts",
@@ -490,7 +406,7 @@
     },
     {
       "file": "src/generators/indexGenerator.ts",
-      "line": 35,
+      "line": 45,
       "symbol": "generateConstraintsMd",
       "type": "function"
     }
@@ -868,8 +784,92 @@
   "constraints": [
     {
       "file": "src/generators/indexGenerator.ts",
-      "line": 35,
+      "line": 45,
       "symbol": "generateConstraintsMd",
+      "type": "function"
+    }
+  ],
+  "install": [
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 16,
+      "symbol": "installGitHook",
+      "type": "function"
+    }
+  ],
+  "git": [
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 16,
+      "symbol": "installGitHook",
+      "type": "function"
+    },
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 51,
+      "symbol": "removeGitHook",
+      "type": "function"
+    }
+  ],
+  "hook": [
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 16,
+      "symbol": "installGitHook",
+      "type": "function"
+    },
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 51,
+      "symbol": "removeGitHook",
+      "type": "function"
+    }
+  ],
+  "remove": [
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 51,
+      "symbol": "removeGitHook",
+      "type": "function"
+    }
+  ],
+  "make": [
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 74,
+      "symbol": "makeExecutable",
+      "type": "function"
+    },
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 166,
+      "symbol": "makeSymbol",
+      "type": "method"
+    },
+    {
+      "file": "tests/generators/conceptsGenerator.test.ts",
+      "line": 96,
+      "symbol": "makeSymbol",
+      "type": "function"
+    },
+    {
+      "file": "tests/generators/conceptsGenerator.test.ts",
+      "line": 188,
+      "symbol": "makeSymbol",
+      "type": "function"
+    },
+    {
+      "file": "tests/generators/domainsGenerator.test.ts",
+      "line": 5,
+      "symbol": "makeSymbol",
+      "type": "function"
+    }
+  ],
+  "executable": [
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 74,
+      "symbol": "makeExecutable",
       "type": "function"
     }
   ],
