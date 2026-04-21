@@ -1,0 +1,17 @@
+{
+  "naming": {
+    "files": "camelCase",
+    "functions": "camelCase",
+    "classes": "PascalCase",
+    "constants": "SCREAMING_SNAKE_CASE",
+    "confidence": 1
+  },
+  "patterns": {},
+  "test_patterns": {
+    "location": "tests/ directory",
+    "runner": "jest"
+  },
+  "file_structure": {
+    "detected_pattern": "src/ root with subdirectories"
+  }
+}

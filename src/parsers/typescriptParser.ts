@@ -88,13 +88,15 @@ export class TypeScriptParser implements Parser {
             ) {
               addSymbol(node.name.text, 'function', node.getStart(sourceFile));
             } else {
-              // Check for route patterns: router.get('/path', handler)
+              // Check for route patterns: const route = router.get('/path', handler)
+              // Requires string literal as first arg to avoid false positives like Map.get(key)
               if (
                 ts.isCallExpression(node.initializer) &&
                 ts.isPropertyAccessExpression(node.initializer.expression)
               ) {
                 const methodName = node.initializer.expression.name.text;
-                if (ROUTE_METHODS.has(methodName)) {
+                const firstArg = node.initializer.arguments[0];
+                if (ROUTE_METHODS.has(methodName) && firstArg && ts.isStringLiteral(firstArg)) {
                   addSymbol(node.name.text, 'route', node.getStart(sourceFile));
                   return;
                 }

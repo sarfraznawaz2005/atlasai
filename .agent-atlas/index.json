@@ -1,0 +1,27 @@
+{
+  "project": {
+    "name": "agent-atlas",
+    "type": "Node.js",
+    "language": "TypeScript",
+    "languages": [
+      "TypeScript"
+    ]
+  },
+  "entry_points": {
+    "main": "./dist/cli.js"
+  },
+  "domains": {
+    "utils": ".agent-atlas/domains/utils.md",
+    "commands": ".agent-atlas/domains/commands.md",
+    "generators": ".agent-atlas/domains/generators.md",
+    "git": ".agent-atlas/domains/git.md",
+    "parsers": ".agent-atlas/domains/parsers.md",
+    "root": ".agent-atlas/domains/root.md",
+    "tests": ".agent-atlas/domains/tests.md"
+  },
+  "concepts_index": ".agent-atlas/concepts.json",
+  "conventions": ".agent-atlas/conventions.json",
+  "constraints": ".agent-atlas/constraints.md",
+  "architecture_pattern": "Modular",
+  "last_generated": "2026-04-21T15:25:29.782Z"
+}

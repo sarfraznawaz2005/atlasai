@@ -1,0 +1,1460 @@
+{
+  "parsed": [
+    {
+      "file": "src/types.ts",
+      "line": 1,
+      "symbol": "ParsedSymbol",
+      "type": "interface"
+    }
+  ],
+  "symbol": [
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 166,
+      "symbol": "makeSymbol",
+      "type": "method"
+    },
+    {
+      "file": "src/parsers/typescriptParser.ts",
+      "line": 44,
+      "symbol": "addSymbol",
+      "type": "function"
+    },
+    {
+      "file": "src/types.ts",
+      "line": 1,
+      "symbol": "ParsedSymbol",
+      "type": "interface"
+    },
+    {
+      "file": "tests/generators/conceptsGenerator.test.ts",
+      "line": 96,
+      "symbol": "makeSymbol",
+      "type": "function"
+    },
+    {
+      "file": "tests/generators/conceptsGenerator.test.ts",
+      "line": 188,
+      "symbol": "makeSymbol",
+      "type": "function"
+    },
+    {
+      "file": "tests/generators/domainsGenerator.test.ts",
+      "line": 5,
+      "symbol": "makeSymbol",
+      "type": "function"
+    }
+  ],
+  "concept": [
+    {
+      "file": "src/types.ts",
+      "line": 9,
+      "symbol": "ConceptEntry",
+      "type": "interface"
+    }
+  ],
+  "entry": [
+    {
+      "file": "src/types.ts",
+      "line": 9,
+      "symbol": "ConceptEntry",
+      "type": "interface"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 152,
+      "symbol": "detectEntryPoints",
+      "type": "function"
+    }
+  ],
+  "concepts": [
+    {
+      "file": "src/generators/conceptsGenerator.ts",
+      "line": 7,
+      "symbol": "generateConcepts",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conceptsGenerator.ts",
+      "line": 48,
+      "symbol": "mergeConceptsForFiles",
+      "type": "function"
+    },
+    {
+      "file": "src/types.ts",
+      "line": 16,
+      "symbol": "ConceptsMap",
+      "type": "type"
+    }
+  ],
+  "map": [
+    {
+      "file": "src/types.ts",
+      "line": 16,
+      "symbol": "ConceptsMap",
+      "type": "type"
+    }
+  ],
+  "domain": [
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 127,
+      "symbol": "generateDomainMarkdown",
+      "type": "function"
+    },
+    {
+      "file": "src/types.ts",
+      "line": 18,
+      "symbol": "DomainInfo",
+      "type": "interface"
+    }
+  ],
+  "info": [
+    {
+      "file": "src/types.ts",
+      "line": 18,
+      "symbol": "DomainInfo",
+      "type": "interface"
+    },
+    {
+      "file": "src/utils/logger.ts",
+      "line": 12,
+      "symbol": "info",
+      "type": "method"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 5,
+      "symbol": "ProjectInfo",
+      "type": "interface"
+    }
+  ],
+  "conventions": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 11,
+      "symbol": "generateConventions",
+      "type": "function"
+    },
+    {
+      "file": "src/types.ts",
+      "line": 25,
+      "symbol": "ConventionsData",
+      "type": "interface"
+    }
+  ],
+  "data": [
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 191,
+      "symbol": "detectDataFlow",
+      "type": "function"
+    },
+    {
+      "file": "src/types.ts",
+      "line": 25,
+      "symbol": "ConventionsData",
+      "type": "interface"
+    }
+  ],
+  "atlas": [
+    {
+      "file": "src/types.ts",
+      "line": 43,
+      "symbol": "AtlasIndex",
+      "type": "interface"
+    },
+    {
+      "file": "src/types.ts",
+      "line": 59,
+      "symbol": "AtlasConfig",
+      "type": "interface"
+    }
+  ],
+  "index": [
+    {
+      "file": "src/generators/indexGenerator.ts",
+      "line": 5,
+      "symbol": "generateIndex",
+      "type": "function"
+    },
+    {
+      "file": "src/types.ts",
+      "line": 43,
+      "symbol": "AtlasIndex",
+      "type": "interface"
+    }
+  ],
+  "config": [
+    {
+      "file": "src/types.ts",
+      "line": 59,
+      "symbol": "AtlasConfig",
+      "type": "interface"
+    }
+  ],
+  "parser": [
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 75,
+      "symbol": "GenericParser",
+      "type": "class"
+    },
+    {
+      "file": "src/parsers/parserFactory.ts",
+      "line": 27,
+      "symbol": "getParser",
+      "type": "function"
+    },
+    {
+      "file": "src/parsers/pythonParser.ts",
+      "line": 5,
+      "symbol": "PythonParser",
+      "type": "class"
+    },
+    {
+      "file": "src/parsers/typescriptParser.ts",
+      "line": 11,
+      "symbol": "TypeScriptParser",
+      "type": "class"
+    },
+    {
+      "file": "src/types.ts",
+      "line": 66,
+      "symbol": "Parser",
+      "type": "interface"
+    }
+  ],
+  "run": [
+    {
+      "file": "src/commands/init.ts",
+      "line": 21,
+      "symbol": "runInit",
+      "type": "function"
+    },
+    {
+      "file": "src/commands/update.ts",
+      "line": 18,
+      "symbol": "runUpdate",
+      "type": "function"
+    },
+    {
+      "file": "src/commands/watch.ts",
+      "line": 12,
+      "symbol": "runWatch",
+      "type": "function"
+    }
+  ],
+  "init": [
+    {
+      "file": "src/commands/init.ts",
+      "line": 21,
+      "symbol": "runInit",
+      "type": "function"
+    }
+  ],
+  "write": [
+    {
+      "file": "src/commands/init.ts",
+      "line": 147,
+      "symbol": "writeBridgeLines",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 10,
+      "symbol": "writeJSON",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 26,
+      "symbol": "writeFile",
+      "type": "function"
+    }
+  ],
+  "bridge": [
+    {
+      "file": "src/commands/init.ts",
+      "line": 147,
+      "symbol": "writeBridgeLines",
+      "type": "function"
+    }
+  ],
+  "lines": [
+    {
+      "file": "src/commands/init.ts",
+      "line": 147,
+      "symbol": "writeBridgeLines",
+      "type": "function"
+    }
+  ],
+  "source": [
+    {
+      "file": "src/commands/init.ts",
+      "line": 163,
+      "symbol": "SOURCE_EXTENSIONS",
+      "type": "export"
+    }
+  ],
+  "extensions": [
+    {
+      "file": "src/commands/init.ts",
+      "line": 163,
+      "symbol": "SOURCE_EXTENSIONS",
+      "type": "export"
+    }
+  ],
+  "update": [
+    {
+      "file": "src/commands/update.ts",
+      "line": 18,
+      "symbol": "runUpdate",
+      "type": "function"
+    }
+  ],
+  "watch": [
+    {
+      "file": "src/commands/watch.ts",
+      "line": 12,
+      "symbol": "runWatch",
+      "type": "function"
+    }
+  ],
+  "flush": [
+    {
+      "file": "src/commands/watch.ts",
+      "line": 39,
+      "symbol": "flushPending",
+      "type": "function"
+    },
+    {
+      "file": "src/commands/watch.ts",
+      "line": 52,
+      "symbol": "scheduleFlush",
+      "type": "function"
+    }
+  ],
+  "pending": [
+    {
+      "file": "src/commands/watch.ts",
+      "line": 39,
+      "symbol": "flushPending",
+      "type": "function"
+    }
+  ],
+  "schedule": [
+    {
+      "file": "src/commands/watch.ts",
+      "line": 52,
+      "symbol": "scheduleFlush",
+      "type": "function"
+    }
+  ],
+  "handle": [
+    {
+      "file": "src/commands/watch.ts",
+      "line": 70,
+      "symbol": "handleChange",
+      "type": "function"
+    }
+  ],
+  "change": [
+    {
+      "file": "src/commands/watch.ts",
+      "line": 70,
+      "symbol": "handleChange",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 213,
+      "symbol": "generateChangeRecipe",
+      "type": "function"
+    }
+  ],
+  "install": [
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 16,
+      "symbol": "installGitHook",
+      "type": "function"
+    }
+  ],
+  "git": [
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 16,
+      "symbol": "installGitHook",
+      "type": "function"
+    },
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 51,
+      "symbol": "removeGitHook",
+      "type": "function"
+    }
+  ],
+  "hook": [
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 16,
+      "symbol": "installGitHook",
+      "type": "function"
+    },
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 51,
+      "symbol": "removeGitHook",
+      "type": "function"
+    }
+  ],
+  "remove": [
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 51,
+      "symbol": "removeGitHook",
+      "type": "function"
+    }
+  ],
+  "make": [
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 74,
+      "symbol": "makeExecutable",
+      "type": "function"
+    },
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 166,
+      "symbol": "makeSymbol",
+      "type": "method"
+    },
+    {
+      "file": "tests/generators/conceptsGenerator.test.ts",
+      "line": 96,
+      "symbol": "makeSymbol",
+      "type": "function"
+    },
+    {
+      "file": "tests/generators/conceptsGenerator.test.ts",
+      "line": 188,
+      "symbol": "makeSymbol",
+      "type": "function"
+    },
+    {
+      "file": "tests/generators/domainsGenerator.test.ts",
+      "line": 5,
+      "symbol": "makeSymbol",
+      "type": "function"
+    }
+  ],
+  "executable": [
+    {
+      "file": "src/git/hookInstaller.ts",
+      "line": 74,
+      "symbol": "makeExecutable",
+      "type": "function"
+    }
+  ],
+  "generate": [
+    {
+      "file": "src/generators/conceptsGenerator.ts",
+      "line": 7,
+      "symbol": "generateConcepts",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 11,
+      "symbol": "generateConventions",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 127,
+      "symbol": "generateDomainMarkdown",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 213,
+      "symbol": "generateChangeRecipe",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/indexGenerator.ts",
+      "line": 5,
+      "symbol": "generateIndex",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/indexGenerator.ts",
+      "line": 35,
+      "symbol": "generateConstraintsMd",
+      "type": "function"
+    }
+  ],
+  "merge": [
+    {
+      "file": "src/generators/conceptsGenerator.ts",
+      "line": 48,
+      "symbol": "mergeConceptsForFiles",
+      "type": "function"
+    }
+  ],
+  "for": [
+    {
+      "file": "src/generators/conceptsGenerator.ts",
+      "line": 48,
+      "symbol": "mergeConceptsForFiles",
+      "type": "function"
+    }
+  ],
+  "files": [
+    {
+      "file": "src/generators/conceptsGenerator.ts",
+      "line": 48,
+      "symbol": "mergeConceptsForFiles",
+      "type": "function"
+    },
+    {
+      "file": "tests/commands/init.test.ts",
+      "line": 36,
+      "symbol": "createProjectFiles",
+      "type": "function"
+    }
+  ],
+  "naming": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 6,
+      "symbol": "NamingStyle",
+      "type": "type"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 46,
+      "symbol": "detectFileNaming",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 76,
+      "symbol": "detectFunctionNaming",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 103,
+      "symbol": "detectClassNaming",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 112,
+      "symbol": "detectConstantNaming",
+      "type": "function"
+    }
+  ],
+  "style": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 6,
+      "symbol": "NamingStyle",
+      "type": "type"
+    }
+  ],
+  "detect": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 46,
+      "symbol": "detectFileNaming",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 76,
+      "symbol": "detectFunctionNaming",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 103,
+      "symbol": "detectClassNaming",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 112,
+      "symbol": "detectConstantNaming",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 124,
+      "symbol": "detectTestRunner",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 176,
+      "symbol": "detectTestLocation",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 210,
+      "symbol": "detectFileStructure",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 241,
+      "symbol": "detectPatterns",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 17,
+      "symbol": "detectDomains",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 191,
+      "symbol": "detectDataFlow",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 45,
+      "symbol": "detectProject",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 63,
+      "symbol": "detectProjectName",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 102,
+      "symbol": "detectLanguages",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 118,
+      "symbol": "detectProjectType",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 152,
+      "symbol": "detectEntryPoints",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 227,
+      "symbol": "detectArchitecturePattern",
+      "type": "function"
+    }
+  ],
+  "file": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 46,
+      "symbol": "detectFileNaming",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 210,
+      "symbol": "detectFileStructure",
+      "type": "function"
+    },
+    {
+      "file": "src/parsers/parserFactory.ts",
+      "line": 51,
+      "symbol": "parseFile",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 26,
+      "symbol": "writeFile",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 31,
+      "symbol": "readFile",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 44,
+      "symbol": "fileExists",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 48,
+      "symbol": "getFileMtime",
+      "type": "function"
+    }
+  ],
+  "function": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 76,
+      "symbol": "detectFunctionNaming",
+      "type": "function"
+    }
+  ],
+  "class": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 103,
+      "symbol": "detectClassNaming",
+      "type": "function"
+    }
+  ],
+  "constant": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 112,
+      "symbol": "detectConstantNaming",
+      "type": "function"
+    }
+  ],
+  "test": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 124,
+      "symbol": "detectTestRunner",
+      "type": "function"
+    },
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 176,
+      "symbol": "detectTestLocation",
+      "type": "function"
+    }
+  ],
+  "runner": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 124,
+      "symbol": "detectTestRunner",
+      "type": "function"
+    }
+  ],
+  "location": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 176,
+      "symbol": "detectTestLocation",
+      "type": "function"
+    }
+  ],
+  "structure": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 210,
+      "symbol": "detectFileStructure",
+      "type": "function"
+    }
+  ],
+  "patterns": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 241,
+      "symbol": "detectPatterns",
+      "type": "function"
+    },
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 5,
+      "symbol": "LanguagePatterns",
+      "type": "interface"
+    },
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 35,
+      "symbol": "ALWAYS_IGNORED_PATTERNS",
+      "type": "export"
+    }
+  ],
+  "compute": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 306,
+      "symbol": "computeConfidence",
+      "type": "function"
+    }
+  ],
+  "confidence": [
+    {
+      "file": "src/generators/conventionsGenerator.ts",
+      "line": 306,
+      "symbol": "computeConfidence",
+      "type": "function"
+    }
+  ],
+  "domains": [
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 17,
+      "symbol": "detectDomains",
+      "type": "function"
+    }
+  ],
+  "markdown": [
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 127,
+      "symbol": "generateDomainMarkdown",
+      "type": "function"
+    }
+  ],
+  "flow": [
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 191,
+      "symbol": "detectDataFlow",
+      "type": "function"
+    }
+  ],
+  "recipe": [
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 213,
+      "symbol": "generateChangeRecipe",
+      "type": "function"
+    }
+  ],
+  "pluralize": [
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 259,
+      "symbol": "pluralizeType",
+      "type": "function"
+    }
+  ],
+  "type": [
+    {
+      "file": "src/generators/domainsGenerator.ts",
+      "line": 259,
+      "symbol": "pluralizeType",
+      "type": "function"
+    },
+    {
+      "file": "src/parsers/typescriptParser.ts",
+      "line": 11,
+      "symbol": "TypeScriptParser",
+      "type": "class"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 118,
+      "symbol": "detectProjectType",
+      "type": "function"
+    }
+  ],
+  "constraints": [
+    {
+      "file": "src/generators/indexGenerator.ts",
+      "line": 35,
+      "symbol": "generateConstraintsMd",
+      "type": "function"
+    }
+  ],
+  "language": [
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 5,
+      "symbol": "LanguagePatterns",
+      "type": "interface"
+    }
+  ],
+  "generic": [
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 75,
+      "symbol": "GenericParser",
+      "type": "class"
+    },
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 138,
+      "symbol": "parseGenericFallback",
+      "type": "method"
+    }
+  ],
+  "can": [
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 76,
+      "symbol": "canParse",
+      "type": "method"
+    },
+    {
+      "file": "src/parsers/pythonParser.ts",
+      "line": 6,
+      "symbol": "canParse",
+      "type": "method"
+    },
+    {
+      "file": "src/parsers/typescriptParser.ts",
+      "line": 12,
+      "symbol": "canParse",
+      "type": "method"
+    }
+  ],
+  "parse": [
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 76,
+      "symbol": "canParse",
+      "type": "method"
+    },
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 81,
+      "symbol": "parse",
+      "type": "method"
+    },
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 138,
+      "symbol": "parseGenericFallback",
+      "type": "method"
+    },
+    {
+      "file": "src/parsers/parserFactory.ts",
+      "line": 51,
+      "symbol": "parseFile",
+      "type": "function"
+    },
+    {
+      "file": "src/parsers/pythonParser.ts",
+      "line": 6,
+      "symbol": "canParse",
+      "type": "method"
+    },
+    {
+      "file": "src/parsers/pythonParser.ts",
+      "line": 10,
+      "symbol": "parse",
+      "type": "method"
+    },
+    {
+      "file": "src/parsers/typescriptParser.ts",
+      "line": 12,
+      "symbol": "canParse",
+      "type": "method"
+    },
+    {
+      "file": "src/parsers/typescriptParser.ts",
+      "line": 17,
+      "symbol": "parse",
+      "type": "method"
+    }
+  ],
+  "fallback": [
+    {
+      "file": "src/parsers/genericParser.ts",
+      "line": 138,
+      "symbol": "parseGenericFallback",
+      "type": "method"
+    }
+  ],
+  "decompose": [
+    {
+      "file": "src/parsers/identifierUtils.ts",
+      "line": 8,
+      "symbol": "decomposeIdentifier",
+      "type": "function"
+    }
+  ],
+  "identifier": [
+    {
+      "file": "src/parsers/identifierUtils.ts",
+      "line": 8,
+      "symbol": "decomposeIdentifier",
+      "type": "function"
+    }
+  ],
+  "extract": [
+    {
+      "file": "src/parsers/parserFactory.ts",
+      "line": 15,
+      "symbol": "extractScriptContent",
+      "type": "function"
+    }
+  ],
+  "script": [
+    {
+      "file": "src/parsers/parserFactory.ts",
+      "line": 15,
+      "symbol": "extractScriptContent",
+      "type": "function"
+    },
+    {
+      "file": "src/parsers/typescriptParser.ts",
+      "line": 11,
+      "symbol": "TypeScriptParser",
+      "type": "class"
+    }
+  ],
+  "content": [
+    {
+      "file": "src/parsers/parserFactory.ts",
+      "line": 15,
+      "symbol": "extractScriptContent",
+      "type": "function"
+    }
+  ],
+  "get": [
+    {
+      "file": "src/parsers/parserFactory.ts",
+      "line": 27,
+      "symbol": "getParser",
+      "type": "function"
+    },
+    {
+      "file": "src/parsers/typescriptParser.ts",
+      "line": 39,
+      "symbol": "getLine",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 48,
+      "symbol": "getFileMtime",
+      "type": "function"
+    }
+  ],
+  "python": [
+    {
+      "file": "src/parsers/pythonParser.ts",
+      "line": 5,
+      "symbol": "PythonParser",
+      "type": "class"
+    }
+  ],
+  "line": [
+    {
+      "file": "src/parsers/typescriptParser.ts",
+      "line": 39,
+      "symbol": "getLine",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 40,
+      "symbol": "appendLine",
+      "type": "function"
+    }
+  ],
+  "add": [
+    {
+      "file": "src/parsers/typescriptParser.ts",
+      "line": 44,
+      "symbol": "addSymbol",
+      "type": "function"
+    }
+  ],
+  "visit": [
+    {
+      "file": "src/parsers/typescriptParser.ts",
+      "line": 59,
+      "symbol": "visitNode",
+      "type": "function"
+    }
+  ],
+  "node": [
+    {
+      "file": "src/parsers/typescriptParser.ts",
+      "line": 59,
+      "symbol": "visitNode",
+      "type": "function"
+    }
+  ],
+  "ensure": [
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 4,
+      "symbol": "ensureDir",
+      "type": "function"
+    }
+  ],
+  "dir": [
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 4,
+      "symbol": "ensureDir",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 65,
+      "symbol": "listDir",
+      "type": "function"
+    }
+  ],
+  "json": [
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 10,
+      "symbol": "writeJSON",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 16,
+      "symbol": "readJSON",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 14,
+      "symbol": "PackageJson",
+      "type": "interface"
+    }
+  ],
+  "read": [
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 16,
+      "symbol": "readJSON",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 31,
+      "symbol": "readFile",
+      "type": "function"
+    }
+  ],
+  "append": [
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 40,
+      "symbol": "appendLine",
+      "type": "function"
+    }
+  ],
+  "exists": [
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 44,
+      "symbol": "fileExists",
+      "type": "function"
+    }
+  ],
+  "mtime": [
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 48,
+      "symbol": "getFileMtime",
+      "type": "function"
+    }
+  ],
+  "relative": [
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 57,
+      "symbol": "toRelativePath",
+      "type": "function"
+    }
+  ],
+  "path": [
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 57,
+      "symbol": "toRelativePath",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 61,
+      "symbol": "toAbsolutePath",
+      "type": "function"
+    }
+  ],
+  "absolute": [
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 61,
+      "symbol": "toAbsolutePath",
+      "type": "function"
+    }
+  ],
+  "list": [
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 65,
+      "symbol": "listDir",
+      "type": "function"
+    }
+  ],
+  "directory": [
+    {
+      "file": "src/utils/fileUtils.ts",
+      "line": 70,
+      "symbol": "isDirectory",
+      "type": "function"
+    }
+  ],
+  "always": [
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 6,
+      "symbol": "ALWAYS_IGNORED_DIRS",
+      "type": "export"
+    },
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 35,
+      "symbol": "ALWAYS_IGNORED_PATTERNS",
+      "type": "export"
+    }
+  ],
+  "ignored": [
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 6,
+      "symbol": "ALWAYS_IGNORED_DIRS",
+      "type": "export"
+    },
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 35,
+      "symbol": "ALWAYS_IGNORED_PATTERNS",
+      "type": "export"
+    }
+  ],
+  "dirs": [
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 6,
+      "symbol": "ALWAYS_IGNORED_DIRS",
+      "type": "export"
+    }
+  ],
+  "ignore": [
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 48,
+      "symbol": "IgnoreRules",
+      "type": "interface"
+    },
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 57,
+      "symbol": "loadIgnoreRules",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 88,
+      "symbol": "shouldIgnore",
+      "type": "function"
+    }
+  ],
+  "rules": [
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 48,
+      "symbol": "IgnoreRules",
+      "type": "interface"
+    },
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 57,
+      "symbol": "loadIgnoreRules",
+      "type": "function"
+    }
+  ],
+  "load": [
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 57,
+      "symbol": "loadIgnoreRules",
+      "type": "function"
+    }
+  ],
+  "should": [
+    {
+      "file": "src/utils/ignoreUtils.ts",
+      "line": 88,
+      "symbol": "shouldIgnore",
+      "type": "function"
+    }
+  ],
+  "logger": [
+    {
+      "file": "src/utils/logger.ts",
+      "line": 11,
+      "symbol": "logger",
+      "type": "export"
+    }
+  ],
+  "success": [
+    {
+      "file": "src/utils/logger.ts",
+      "line": 16,
+      "symbol": "success",
+      "type": "method"
+    }
+  ],
+  "warn": [
+    {
+      "file": "src/utils/logger.ts",
+      "line": 20,
+      "symbol": "warn",
+      "type": "method"
+    }
+  ],
+  "error": [
+    {
+      "file": "src/utils/logger.ts",
+      "line": 24,
+      "symbol": "error",
+      "type": "method"
+    }
+  ],
+  "debug": [
+    {
+      "file": "src/utils/logger.ts",
+      "line": 28,
+      "symbol": "debug",
+      "type": "method"
+    }
+  ],
+  "step": [
+    {
+      "file": "src/utils/logger.ts",
+      "line": 34,
+      "symbol": "step",
+      "type": "method"
+    }
+  ],
+  "summary": [
+    {
+      "file": "src/utils/logger.ts",
+      "line": 38,
+      "symbol": "summary",
+      "type": "method"
+    }
+  ],
+  "project": [
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 5,
+      "symbol": "ProjectInfo",
+      "type": "interface"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 45,
+      "symbol": "detectProject",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 63,
+      "symbol": "detectProjectName",
+      "type": "function"
+    },
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 118,
+      "symbol": "detectProjectType",
+      "type": "function"
+    },
+    {
+      "file": "tests/commands/init.test.ts",
+      "line": 36,
+      "symbol": "createProjectFiles",
+      "type": "function"
+    }
+  ],
+  "package": [
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 14,
+      "symbol": "PackageJson",
+      "type": "interface"
+    }
+  ],
+  "cargo": [
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 21,
+      "symbol": "CargoToml",
+      "type": "interface"
+    }
+  ],
+  "toml": [
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 21,
+      "symbol": "CargoToml",
+      "type": "interface"
+    }
+  ],
+  "name": [
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 63,
+      "symbol": "detectProjectName",
+      "type": "function"
+    }
+  ],
+  "languages": [
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 102,
+      "symbol": "detectLanguages",
+      "type": "function"
+    }
+  ],
+  "points": [
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 152,
+      "symbol": "detectEntryPoints",
+      "type": "function"
+    }
+  ],
+  "architecture": [
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 227,
+      "symbol": "detectArchitecturePattern",
+      "type": "function"
+    }
+  ],
+  "pattern": [
+    {
+      "file": "src/utils/projectDetector.ts",
+      "line": 227,
+      "symbol": "detectArchitecturePattern",
+      "type": "function"
+    }
+  ],
+  "create": [
+    {
+      "file": "tests/commands/init.test.ts",
+      "line": 36,
+      "symbol": "createProjectFiles",
+      "type": "function"
+    }
+  ]
+}

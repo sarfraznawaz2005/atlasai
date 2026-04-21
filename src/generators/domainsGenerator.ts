@@ -35,8 +35,30 @@ export function detectDomains(
 
   const domainMap = new Map<string, string[]>();
 
+  // Config/tooling files at project root that should not appear as domain members
+  const ROOT_CONFIG_FILES = new Set([
+    'jest.config.ts', 'jest.config.js', 'jest.config.cjs',
+    'vitest.config.ts', 'vitest.config.js',
+    'vite.config.ts', 'vite.config.js',
+    'webpack.config.ts', 'webpack.config.js',
+    'rollup.config.ts', 'rollup.config.js',
+    'tsconfig.json', 'babel.config.js', 'babel.config.json',
+    'eslint.config.js', 'eslint.config.ts', '.eslintrc.js',
+    'prettier.config.js', '.prettierrc.js',
+    'tailwind.config.ts', 'tailwind.config.js',
+    'next.config.ts', 'next.config.js',
+    'nuxt.config.ts', 'nuxt.config.js',
+  ]);
+
   for (const file of sourceFiles) {
     const normalized = file.replace(/\\/g, '/');
+    const basename = normalized.split('/').pop() || '';
+
+    // Skip root-level config/tooling files when project has a src/ directory
+    if (hasSrcDir && !normalized.includes('/') && ROOT_CONFIG_FILES.has(basename)) {
+      continue;
+    }
+
     let domainName: string;
 
     if (hasSrcDir && normalized.startsWith('src/')) {

@@ -1,0 +1,1 @@
+Before starting any task, read .agent-atlas/index.json first.

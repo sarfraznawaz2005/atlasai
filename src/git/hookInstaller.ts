@@ -11,7 +11,7 @@ npx agent-atlas update
 git add .agent-atlas/
 `;
 
-const HOOK_MARKER = 'atlas-ai';
+const HOOK_MARKER = 'agent-atlas';
 
 export function installGitHook(projectRoot: string): void {
   const gitDir = path.join(projectRoot, '.git');

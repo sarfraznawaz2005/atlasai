@@ -1,4 +1,4 @@
-# atlas-ai
+# agent-atlas
 
 Auto-generate a structured navigation layer for AI agents to understand any codebase — no vector store, no embeddings, no external services.
 
@@ -18,7 +18,7 @@ The result: agents explore the wrong directories, re-read files they already vis
 
 ## The Solution
 
-Atlas scans your project and writes a `.atlas/` directory — a file-resident navigation layer made of plain JSON and Markdown. Every file has a stable path. Any agent reads it with the same file tools it already uses.
+Atlas scans your project and writes a `.agent-atlas/` directory — a file-resident navigation layer made of plain JSON and Markdown. Every file has a stable path. Any agent reads it with the same file tools it already uses.
 
 No infrastructure. No embeddings. No external API calls. Run one command, commit the output, and every agent that opens the project gets a structured map of exactly what exists and where.
 
@@ -41,7 +41,7 @@ No infrastructure. No embeddings. No external API calls. Run one command, commit
 
 ## What Gets Generated
 
-Running `atlas init` produces the following inside `.atlas/`:
+Running `agent-atlas init` produces the following inside `.agent-atlas/`:
 
 ### `index.json` — front door (~2k tokens)
 
@@ -59,15 +59,15 @@ The first file every agent should read. Contains project type, primary language,
     "main": "./dist/cli.js"
   },
   "domains": {
-    "commands": ".atlas/domains/commands.md",
-    "generators": ".atlas/domains/generators.md",
-    "parsers": ".atlas/domains/parsers.md",
-    "utils": ".atlas/domains/utils.md",
-    "git": ".atlas/domains/git.md"
+    "commands": ".agent-atlas/domains/commands.md",
+    "generators": ".agent-atlas/domains/generators.md",
+    "parsers": ".agent-atlas/domains/parsers.md",
+    "utils": ".agent-atlas/domains/utils.md",
+    "git": ".agent-atlas/domains/git.md"
   },
-  "concepts_index": ".atlas/concepts.json",
-  "conventions": ".atlas/conventions.json",
-  "constraints": ".atlas/constraints.md",
+  "concepts_index": ".agent-atlas/concepts.json",
+  "conventions": ".agent-atlas/conventions.json",
+  "constraints": ".agent-atlas/constraints.md",
   "architecture_pattern": "Flat / Unstructured",
   "last_generated": "2026-04-21T13:23:45.920Z"
 }
@@ -157,16 +157,16 @@ A structured template pre-populated with common constraint categories: authentic
 
 ### `history.jsonl` — append-only agent task log
 
-An empty file at init time. After each task, your agent appends a record describing its intent, which files it read, and which files it changed. Over time this creates a ground-truth mapping that `atlas update` uses to improve domain files. See [Self-Improving Index](#self-improving-index).
+An empty file at init time. After each task, your agent appends a record describing its intent, which files it read, and which files it changed. Over time this creates a ground-truth mapping that `agent-atlas update` uses to improve domain files. See [Self-Improving Index](#self-improving-index).
 
 ---
 
 ## How It Works With Any Agent
 
-`atlas init` detects common agent configuration files in your project root and appends a single bridge line to each one that already exists:
+`agent-atlas init` detects common agent configuration files in your project root and appends a single bridge line to each one that already exists:
 
 ```
-Before starting any task, read .atlas/index.json first.
+Before starting any task, read .agent-atlas/index.json first.
 ```
 
 | Agent | Config file |
@@ -179,7 +179,7 @@ That one line is the only change to your existing agent configuration. The rest 
 
 **Agent protocol:**
 
-1. Read `.atlas/index.json` — identify project type, architecture, and available domains
+1. Read `.agent-atlas/index.json` — identify project type, architecture, and available domains
 2. Map the task to the relevant domain(s) from `index.json`'s `domains` map
 3. Read the matching `domains/*.md` file — get the file list, symbol locations, and change recipe
 4. Look up task-relevant keywords in `concepts.json` — get exact `file:line` pointers
@@ -205,16 +205,16 @@ npx agent-atlas init
 ## Usage
 
 ```bash
-agent-atlas init [path]     # Full generation of all .atlas/ files for a project
+agent-atlas init [path]     # Full generation of all .agent-atlas/ files for a project
 agent-atlas update [path]   # Incremental update — only changed files are re-processed
-agent-atlas watch [path]    # Watch mode — auto-updates .atlas/ on file save
+agent-atlas watch [path]    # Watch mode — auto-updates .agent-atlas/ on file save
 ```
 
 All commands default to the current directory if `[path]` is omitted.
 
-`atlas update` reads `last_generated` from `index.json` and only re-parses files with a newer modification time. If `.atlas/index.json` does not exist, it falls back to a full `init`.
+`atlas update` reads `last_generated` from `index.json` and only re-parses files with a newer modification time. If `.agent-atlas/index.json` does not exist, it falls back to a full `init`.
 
-`atlas watch` uses [chokidar](https://github.com/paulmillr/chokidar) to monitor source files and debounces updates by 500ms to batch rapid saves into a single update pass.
+`agent-atlas watch` uses [chokidar](https://github.com/paulmillr/chokidar) to monitor source files and debounces updates by 500ms to batch rapid saves into a single update pass.
 
 ---
 
@@ -229,7 +229,7 @@ The following are always ignored regardless of any ignore files:
 ```
 node_modules  dist        build       coverage    .next
 .nuxt         .cache      .turbo      .git        __pycache__
-.venv         venv        vendor      target      .atlas
+.venv         venv        vendor      target      .agent-atlas
 out           tmp         temp        .yarn       bower_components
 *.min.js      *.min.css   *.map       *.d.ts      *.lock files
 ```
@@ -298,11 +298,11 @@ TypeScript and JavaScript use the TypeScript Compiler API, which walks the real 
 
 The agent sees domains including `users`, `notifications`, and `services`. It also sees `architecture_pattern` and `conventions` pointers.
 
-**Step 2 — Read `.atlas/domains/users.md`** (~1k tokens)
+**Step 2 — Read `.agent-atlas/domains/users.md`** (~1k tokens)
 
 The domain file shows `src/users/userService.ts` with a `registerUser` function at line 47. The change recipe says: update the service layer, register a new route if needed, add tests.
 
-**Step 3 — Read `.atlas/domains/notifications.md`** (~1k tokens)
+**Step 3 — Read `.agent-atlas/domains/notifications.md`** (~1k tokens)
 
 Shows `src/notifications/emailService.ts` with a `sendEmail` function at line 12 and a `NotificationTemplate` interface at line 3.
 
@@ -338,30 +338,30 @@ Total tokens consumed before the agent wrote a single line of code: approximatel
 - `files_changed` — files that were actually modified
 - `timestamp` — ISO 8601
 
-When you run `atlas update` after accumulating history, the generator reads these records and uses the `intent → files_changed` mappings as additional signal when regenerating domain files. Domains that accumulate task history get richer change recipes and more accurate file prioritization over time.
+When you run `agent-atlas update` after accumulating history, the generator reads these records and uses the `intent → files_changed` mappings as additional signal when regenerating domain files. Domains that accumulate task history get richer change recipes and more accurate file prioritization over time.
 
-The history file is plain text. It is safe to commit. It is the only part of `.atlas/` that grows with usage rather than being fully regenerated.
+The history file is plain text. It is safe to commit. It is the only part of `.agent-atlas/` that grows with usage rather than being fully regenerated.
 
 ---
 
 ## Git Hook
 
-`atlas init` installs a pre-commit hook at `.git/hooks/pre-commit` that runs `atlas update` and stages the result before every commit:
+`agent-atlas init` installs a pre-commit hook at `.git/hooks/pre-commit` that runs `agent-atlas update` and stages the result before every commit:
 
 ```sh
 #!/bin/sh
-# atlas-ai pre-commit hook
+# agent-atlas pre-commit hook
 
 npx agent-atlas update
-git add .atlas/
+git add .agent-atlas/
 ```
 
-If a pre-commit hook already exists, atlas appends its commands to the end of the existing file rather than replacing it.
+If a pre-commit hook already exists, agent-atlas appends its commands to the end of the existing file rather than replacing it.
 
-If no `.git/` directory is found (monorepo sub-package, non-git project), atlas skips hook installation and prints:
+If no `.git/` directory is found (monorepo sub-package, non-git project), agent-atlas skips hook installation and prints:
 
 ```
-No .git directory found. Run `atlas watch` to keep .atlas/ up to date automatically.
+No .git directory found. Run `agent-atlas watch` to keep .agent-atlas/ up to date automatically.
 ```
 
 ---

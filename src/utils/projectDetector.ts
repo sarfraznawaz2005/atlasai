@@ -267,6 +267,16 @@ function detectArchitecturePattern(sourceFiles: string[], projectRoot: string): 
     return 'Feature-based';
   }
 
+  // Modular / CLI pattern: commands + organised modules
+  const modularDirs = ['commands', 'generators', 'parsers', 'handlers', 'processors', 'transformers', 'resolvers'];
+  const modularCount = modularDirs.filter(d => dirList.includes(d)).length;
+  if (modularCount >= 2) {
+    return 'Modular';
+  }
+  if (modularCount >= 1 && dirList.includes('utils')) {
+    return 'Modular';
+  }
+
   // Next.js / framework patterns
   if (dirList.includes('pages') || dirList.includes('app')) {
     const pkgPath = path.join(projectRoot, 'package.json');
