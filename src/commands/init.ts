@@ -10,13 +10,8 @@ import { installGitHook } from '../git/hookInstaller';
 import { detectProject } from '../utils/projectDetector';
 import { writeJSON, writeFile, ensureDir, toRelativePath, fileExists } from '../utils/fileUtils';
 import { logger } from '../utils/logger';
+import { loadIgnoreRules } from '../utils/ignoreUtils';
 import { ParsedSymbol } from '../types';
-
-const IGNORED_DIRS = [
-  'node_modules', '.git', 'dist', 'build', 'coverage',
-  '.next', '__pycache__', '.venv', 'venv', 'vendor',
-  'target', '.atlas', '.turbo', '.cache', 'out',
-];
 
 const SOURCE_EXTENSIONS = [
   'ts', 'tsx', 'js', 'jsx', 'py', 'go', 'rb', 'rs',
@@ -45,18 +40,22 @@ export async function runInit(projectPath: string): Promise<void> {
 
   // Discover source files
   logger.step('Discovering', 'source files...');
-  const ignoredGlobs = IGNORED_DIRS.map(d => `**/${d}/**`);
+  const { ignoreGlobs, shouldIgnore, sources } = loadIgnoreRules(projectRoot);
+  logger.info(`Ignore rules loaded from: ${sources.join(', ')}`);
+
   const extensionGlob = `**/*.{${SOURCE_EXTENSIONS.join(',')}}`;
 
   const absoluteFiles = await fg(extensionGlob, {
     cwd: projectRoot,
-    ignore: ignoredGlobs,
+    ignore: ignoreGlobs,
     absolute: true,
     followSymbolicLinks: false,
     dot: false,
   });
 
-  const sourceFiles = absoluteFiles.map(f => toRelativePath(f, projectRoot));
+  const sourceFiles = absoluteFiles
+    .map(f => toRelativePath(f, projectRoot))
+    .filter(f => !shouldIgnore(f));
 
   logger.info(`Found ${sourceFiles.length} source files`);
 
@@ -154,4 +153,4 @@ function writeBridgeLines(projectRoot: string): void {
   }
 }
 
-export { IGNORED_DIRS, SOURCE_EXTENSIONS };
+export { SOURCE_EXTENSIONS };

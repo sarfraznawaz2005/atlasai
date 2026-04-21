@@ -1,21 +1,42 @@
 {
-  "name": "atlas-ai",
-  "version": "0.1.0",
+  "name": "agent-atlas",
+  "version": "1.0.0",
   "description": "Auto-generate a navigational index for AI agents to understand any codebase",
+  "author": "Sarfraz Ahmed",
+  "license": "MIT",
+  "homepage": "https://github.com/sarfraznawaz2005/atlasai#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sarfraznawaz2005/atlasai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sarfraznawaz2005/atlasai/issues"
+  },
   "bin": {
-    "atlas": "./dist/cli.js"
+    "agent-atlas": "./dist/cli.js"
   },
   "main": "./dist/cli.js",
+  "types": "./dist/cli.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "ts-node src/cli.ts",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "prepublishOnly": "npm run build && npm test"
   },
   "dependencies": {
     "chokidar": "^3.6.0",
     "commander": "^12.1.0",
     "fast-glob": "^3.3.2",
+    "ignore": "^7.0.5",
     "simple-git": "^3.27.0",
     "typescript": "^5.5.4",
     "zod": "^3.23.8"
@@ -27,6 +48,20 @@
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2"
   },
-  "keywords": ["cli", "ai", "codebase", "documentation", "agents"],
-  "license": "MIT"
+  "keywords": [
+    "cli",
+    "ai",
+    "ai-agent",
+    "codebase",
+    "documentation",
+    "agents",
+    "claude",
+    "cursor",
+    "gemini",
+    "copilot",
+    "context",
+    "navigation",
+    "index",
+    "llm"
+  ]
 }

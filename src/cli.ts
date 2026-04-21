@@ -8,9 +8,9 @@ import { runWatch } from './commands/watch';
 const program = new Command();
 
 program
-  .name('atlas')
+  .name('agent-atlas')
   .description('Auto-generate a navigational index for AI agents to understand any codebase')
-  .version('0.1.0');
+  .version('1.0.0');
 
 program
   .command('init [path]')

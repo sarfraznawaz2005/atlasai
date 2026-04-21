@@ -11,8 +11,9 @@ import {
   writeJSON, readJSON, toRelativePath, fileExists, ensureDir
 } from '../utils/fileUtils';
 import { logger } from '../utils/logger';
+import { loadIgnoreRules } from '../utils/ignoreUtils';
 import { AtlasIndex, ConceptsMap, ParsedSymbol } from '../types';
-import { IGNORED_DIRS, SOURCE_EXTENSIONS } from './init';
+import { SOURCE_EXTENSIONS } from './init';
 
 export async function runUpdate(projectPath: string, changedFiles?: string[]): Promise<void> {
   const projectRoot = path.resolve(projectPath);
@@ -45,18 +46,20 @@ export async function runUpdate(projectPath: string, changedFiles?: string[]): P
   logger.step('Updating', `atlas for ${projectRoot} (last generated: ${lastGenerated.toISOString()})`);
 
   // Discover all source files
-  const ignoredGlobs = IGNORED_DIRS.map(d => `**/${d}/**`);
+  const { ignoreGlobs, shouldIgnore } = loadIgnoreRules(projectRoot);
   const extensionGlob = `**/*.{${SOURCE_EXTENSIONS.join(',')}}`;
 
   const absoluteFiles = await fg(extensionGlob, {
     cwd: projectRoot,
-    ignore: ignoredGlobs,
+    ignore: ignoreGlobs,
     absolute: true,
     followSymbolicLinks: false,
     dot: false,
   });
 
-  const allSourceFiles = absoluteFiles.map(f => toRelativePath(f, projectRoot));
+  const allSourceFiles = absoluteFiles
+    .map(f => toRelativePath(f, projectRoot))
+    .filter(f => !shouldIgnore(f));
 
   // Determine which files changed
   let filesToUpdate: string[];

@@ -4,7 +4,8 @@ import chokidar from 'chokidar';
 import { runUpdate } from './update';
 import { fileExists } from '../utils/fileUtils';
 import { logger } from '../utils/logger';
-import { SOURCE_EXTENSIONS, IGNORED_DIRS } from './init';
+import { SOURCE_EXTENSIONS } from './init';
+import { ALWAYS_IGNORED_DIRS } from '../utils/ignoreUtils';
 
 const DEBOUNCE_MS = 500;
 
@@ -24,7 +25,7 @@ export async function runWatch(projectPath: string): Promise<void> {
 
   const extPattern = `**/*.{${SOURCE_EXTENSIONS.join(',')}}`;
   const ignoredPatterns = [
-    ...IGNORED_DIRS.map(d => `**/${d}/**`),
+    ...ALWAYS_IGNORED_DIRS.map((d: string) => `**/${d}/**`),
     '**/.atlas/**',
   ];
 

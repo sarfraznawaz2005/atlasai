@@ -191,13 +191,13 @@ That one line is the only change to your existing agent configuration. The rest 
 ## Installation
 
 ```bash
-npm install -g atlas-ai
+npm install -g agent-atlas
 ```
 
 Or use without installing:
 
 ```bash
-npx atlas-ai init
+npx agent-atlas init
 ```
 
 ---
@@ -205,9 +205,9 @@ npx atlas-ai init
 ## Usage
 
 ```bash
-atlas init [path]     # Full generation of all .atlas/ files for a project
-atlas update [path]   # Incremental update — only changed files are re-processed
-atlas watch [path]    # Watch mode — auto-updates .atlas/ on file save
+agent-atlas init [path]     # Full generation of all .atlas/ files for a project
+agent-atlas update [path]   # Incremental update — only changed files are re-processed
+agent-atlas watch [path]    # Watch mode — auto-updates .atlas/ on file save
 ```
 
 All commands default to the current directory if `[path]` is omitted.
@@ -215,6 +215,55 @@ All commands default to the current directory if `[path]` is omitted.
 `atlas update` reads `last_generated` from `index.json` and only re-parses files with a newer modification time. If `.atlas/index.json` does not exist, it falls back to a full `init`.
 
 `atlas watch` uses [chokidar](https://github.com/paulmillr/chokidar) to monitor source files and debounces updates by 500ms to batch rapid saves into a single update pass.
+
+---
+
+## Ignoring Files
+
+Agent Atlas uses a three-layer ignore system applied on every `init` and `update` run.
+
+### Layer 1: Built-in patterns (always active)
+
+The following are always ignored regardless of any ignore files:
+
+```
+node_modules  dist        build       coverage    .next
+.nuxt         .cache      .turbo      .git        __pycache__
+.venv         venv        vendor      target      .atlas
+out           tmp         temp        .yarn       bower_components
+*.min.js      *.min.css   *.map       *.d.ts      *.lock files
+```
+
+### Layer 2: `.gitignore`
+
+If a `.gitignore` exists at the project root it is automatically parsed and respected. No configuration needed.
+
+### Layer 3: `.agentatlasignore`
+
+Create a `.agentatlasignore` at your project root to exclude additional paths specific to agent scanning. It follows the same syntax as `.gitignore`:
+
+```gitignore
+# Exclude generated API clients
+src/generated/
+
+# Exclude a specific vendor bundle kept in source
+public/vendor.js
+
+# Exclude all fixture files
+**/__fixtures__/
+tests/fixtures/
+
+# Exclude a noisy config directory
+.storybook/
+```
+
+The file is optional. If it does not exist, only the built-in patterns and `.gitignore` apply.
+
+### Precedence
+
+Built-in patterns → `.gitignore` → `.agentatlasignore`
+
+A path ignored by any layer is excluded. There is no way to un-ignore a path that a higher-priority layer has excluded.
 
 ---
 
@@ -303,7 +352,7 @@ The history file is plain text. It is safe to commit. It is the only part of `.a
 #!/bin/sh
 # atlas-ai pre-commit hook
 
-npx atlas-ai update
+npx agent-atlas update
 git add .atlas/
 ```
 
